@@ -126,8 +126,10 @@ p {
 
 .column-hero-image {
     grid-column-start: 2;
+    height: 100%;
+    width: 100%;
     background-image: url('images/website images/hero\ food.png');
-    background-size: cover;
+    background-size: contain;
     background-position: right center;
     background-repeat: no-repeat;
 
