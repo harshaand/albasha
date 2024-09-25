@@ -53,11 +53,15 @@
 body {
     color: var(--white);
     font-family: 'Helvetica', sans-serif;
+    background-color: grey;
 }
 
 h1 {
     padding: 0;
     margin: 0;
+    font-family: 'Helvetica';
+    font-weight: 400;
+    font-size: var(--h1);
 }
 
 p {
@@ -82,11 +86,9 @@ p {
     align-items: center;
     width: var(--container-width);
     padding: var(--container-padding-top-bottom) 0;
-
-
 }
 
-.column-copy {
+.column-hero-copy {
     grid-column-start: 1;
     display: flex;
     flex-direction: column;
@@ -94,11 +96,6 @@ p {
 
 }
 
-.hero-heading {
-    font-family: 'Helvetica';
-    font-weight: 400;
-    font-size: var(--h1);
-}
 
 .hero-heading-coloured {
     color: var(--light-mustard);
@@ -127,15 +124,45 @@ p {
     background-color: var(--mustard-hover);
 }
 
-
-
-.column-image {
+.column-hero-image {
     grid-column-start: 2;
-    height: 110%;
-    width: auto;
     background-image: url('images/website images/hero\ food.png');
-    background-size: contain;
-    background-position: center;
+    background-size: cover;
+    background-position: right center;
     background-repeat: no-repeat;
 
+}
+
+.section-about {
+    color: var(--font-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+}
+
+.container-about {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    width: var(--container-width);
+    padding: var(--container-padding-top-bottom) 0;
+}
+
+.column-about-text {
+    grid-column-start: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+}
+
+.column-about-image {
+    grid-column-start: 1;
+    height: 300px;
+    width: auto;
+    background-image: url('images/website images/small cafe example .jpg');
+    background-size: contain;
+    background-position: left center;
+    background-repeat: no-repeat;
 }
