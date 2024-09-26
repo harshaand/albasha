@@ -38,9 +38,9 @@
     --p2: 14px;
     --p3: 12px;
 
-    --container-width: 90vw;
-    --container-padding-vertical: 64px;
-    --container-padding-horizontal: 5vw;
+    --container-width: 90%;
+    --container-spacing-vertical: 64px;
+    --container-spacing-horizontal: 5vw;
 
     --white: #ffffff;
     --black: #000000;
@@ -53,6 +53,8 @@
     --translucent: rgba(0, 0, 0, 0.15);
 
     --cards-border-radius: 24px;
+    --card-recoms-width: calc((var(--container-width)*0.9)/6);
+    --card-recoms-gap: calc((var(--container-width)*0.1)/5);
 }
 
 body {
@@ -106,7 +108,7 @@ p {
     grid-template-columns: 50% 50%;
     align-items: center;
     width: 100%;
-    padding: var(--container-padding-vertical) var(--container-padding-horizontal);
+    margin: var(--container-spacing-vertical) var(--container-spacing-horizontal);
 }
 
 .column-hero-copy {
@@ -170,7 +172,7 @@ p {
     gap: 5%;
     align-items: center;
     width: 100%;
-    padding: var(--container-padding-vertical) var(--container-padding-horizontal);
+    margin: var(--container-spacing-vertical) var(--container-spacing-horizontal);
 }
 
 .column-about-text {
@@ -197,9 +199,7 @@ p {
     flex-direction: column;
     gap: 64px;
     background-color: var(--navy-blue);
-    padding: var(--container-padding-vertical) 0;
-    overflow: visible;
-
+    padding: var(--container-spacing-vertical) 0;
 
 
 }
@@ -209,26 +209,57 @@ p {
     flex-direction: column;
     gap: 24px;
     overflow: visible;
-
 }
 
 .recoms-nav {
-    margin: 0 calc((100vw - var(--container-width))/2);
+    margin: 0 var(--container-spacing-horizontal);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.slider-recoms {
+.recoms-buttons {
     display: flex;
     flex-direction: row;
-    gap: 16px;
-    overflow-x: scroll;
+}
+
+.slider-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+}
+
+.slider-btn:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.slider-btn:active {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.slider {
+    display: flex;
+    flex-direction: row;
+    gap: var(--card-recoms-gap);
+    scroll-behavior: smooth;
+    transition: all 0.25s ease-in;
+    scroll-snap-type: x mandatory;
+    overflow: hidden;
 
 }
 
 .card-food-spacer {
-    width: calc(((100vw - var(--container-width))/2) - 16px);
+    width: calc(((100% - var(--container-width))/2) - var(--card-recoms-gap));
     height: 50px;
     flex-grow: 0;
     flex-shrink: 0;
@@ -238,12 +269,15 @@ p {
 
     display: flex;
     flex-direction: column;
-    width: 200px;
+    width: var(--card-recoms-width);
     flex-grow: 0;
     flex-shrink: 0;
     border-radius: var(--cards-border-radius);
     background-color: var(--translucent);
     box-shadow: -4px 4px 20px -6px var(--black);
+
+    scroll-snap-align: start;
+    scroll-margin-left: var(--container-spacing-horizontal);
 
 }
 
