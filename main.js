@@ -1,10 +1,14 @@
 window.addEventListener("load", function () {
-    const recoms_slider = document.querySelector("#slider-recoms");
-    const recoms_left_btn = document.querySelector("#recoms-left-btn");
-    const recoms_right_btn = document.querySelector("#recoms-right-btn");
+    const food_slider = document.querySelector("#slider-food");
+    const food_left_btn = document.querySelector("#food-left-btn");
+    const food_right_btn = document.querySelector("#food-right-btn");
+    updateSliderBtnVisibility(food_slider, food_left_btn, food_right_btn);
 
+    const reviews_slider = document.querySelector("#slider-reviews");
+    const reviews_left_btn = document.querySelector("#reviews-left-btn");
+    const reviews_right_btn = document.querySelector("#reviews-right-btn");
+    updateSliderBtnVisibility(reviews_slider, reviews_left_btn, reviews_right_btn);
 
-    updateSliderBtnVisibility(recoms_slider, recoms_left_btn, recoms_right_btn);
 
 
     function updateSliderBtnVisibility(slider, left_btn, right_btn) {
