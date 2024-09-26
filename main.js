@@ -9,6 +9,11 @@ window.addEventListener("load", function () {
     const reviews_right_btn = document.querySelector("#reviews-right-btn");
     updateSliderBtnVisibility(reviews_slider, reviews_left_btn, reviews_right_btn);
 
+    const categories_slider = document.querySelector("#slider-categories");
+    const categories_left_btn = document.querySelector("#categories-left-btn");
+    const categories_right_btn = document.querySelector("#categories-right-btn");
+    updateSliderBtnVisibility(categories_slider, categories_left_btn, categories_right_btn);
+
 
 
     function updateSliderBtnVisibility(slider, left_btn, right_btn) {
@@ -32,7 +37,8 @@ window.addEventListener("load", function () {
             if (slider.clientWidth > slider.scrollWidth) {
                 right_btn.style.visibility = 'hidden';
             }
-            if (slider.scrollLeft > 0 && slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) {
+            //Sometimes scrollLeftstops right before the end, so added the -10 for safety
+            if (slider.scrollLeft > 0 && slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
                 right_btn.style.visibility = 'hidden';
 
             }
