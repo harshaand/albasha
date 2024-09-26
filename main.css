@@ -39,7 +39,8 @@
     --p3: 12px;
 
     --container-width: 90vw;
-    --container-padding-top-bottom: 64px;
+    --container-padding-vertical: 64px;
+    --container-padding-horizontal: 5vw;
 
     --white: #ffffff;
     --black: #000000;
@@ -48,6 +49,10 @@
     --mustard: #df8d1a;
     --light-mustard: #e89c31;
     --mustard-hover: #ff9500;
+    --navy-blue: #0b3248;
+    --translucent: rgba(0, 0, 0, 0.15);
+
+    --cards-border-radius: 24px;
 }
 
 body {
@@ -62,6 +67,22 @@ h1 {
     font-family: 'Helvetica';
     font-weight: 400;
     font-size: var(--h1);
+}
+
+h2 {
+    padding: 0;
+    margin: 0;
+    font-family: 'Helvetica';
+    font-weight: 400;
+    font-size: var(--h2);
+}
+
+h4 {
+    padding: 0;
+    margin: 0 0 4px 0;
+    font-family: 'Helvetica';
+    font-weight: 700;
+    font-size: var(--h4);
 }
 
 p {
@@ -84,8 +105,8 @@ p {
     display: grid;
     grid-template-columns: 50% 50%;
     align-items: center;
-    width: var(--container-width);
-    padding: var(--container-padding-top-bottom) 0;
+    width: 100%;
+    padding: var(--container-padding-vertical) var(--container-padding-horizontal);
 }
 
 .column-hero-copy {
@@ -126,13 +147,13 @@ p {
 
 .column-hero-image {
     grid-column-start: 2;
+}
+
+.hero-image {
     height: 100%;
     width: 100%;
-    background-image: url('images/website images/hero\ food.png');
-    background-size: contain;
-    background-position: right center;
-    background-repeat: no-repeat;
-
+    object-fit: contain;
+    object-position: right center;
 }
 
 .section-about {
@@ -145,10 +166,11 @@ p {
 
 .container-about {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 45% 50%;
+    gap: 5%;
     align-items: center;
-    width: var(--container-width);
-    padding: var(--container-padding-top-bottom) 0;
+    width: 100%;
+    padding: var(--container-padding-vertical) var(--container-padding-horizontal);
 }
 
 .column-about-text {
@@ -156,15 +178,86 @@ p {
     display: flex;
     flex-direction: column;
     gap: 16px;
-
 }
 
 .column-about-image {
     grid-column-start: 1;
     height: 300px;
-    width: auto;
-    background-image: url('images/website images/small cafe example .jpg');
-    background-size: contain;
-    background-position: left center;
-    background-repeat: no-repeat;
+}
+
+.about-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.section-recoms-reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    background-color: var(--navy-blue);
+    padding: var(--container-padding-vertical) 0;
+    overflow: visible;
+
+
+
+}
+
+.container-recoms {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow: visible;
+
+}
+
+.recoms-nav {
+    margin: 0 calc((100vw - var(--container-width))/2);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.slider-recoms {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    overflow-x: scroll;
+
+}
+
+.card-food-spacer {
+    width: calc(((100vw - var(--container-width))/2) - 16px);
+    height: 50px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.card-food {
+
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    border-radius: var(--cards-border-radius);
+    background-color: var(--translucent);
+    box-shadow: -4px 4px 20px -6px var(--black);
+
+}
+
+.image-food {
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    border-radius: var(--cards-border-radius) var(--cards-border-radius) 0 0;
+}
+
+.text-food {
+    width: 100%;
+    border-radius: 0 0 var(--cards-border-radius) var(--cards-border-radius);
+    padding: 16px 12px;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
 }
