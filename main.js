@@ -1,4 +1,8 @@
 window.addEventListener("load", function () {
+    const serverApiUrl = 'http://localhost:3002/api/menu';
+    // Fetch menu items on page load
+    fetchMenuItems();
+
     const food_slider = document.querySelector("#slider-food");
     const food_left_btn = document.querySelector("#food-left-btn");
     const food_right_btn = document.querySelector("#food-right-btn");
@@ -58,5 +62,66 @@ window.addEventListener("load", function () {
         resizeObserver.observe(slider);
 
     }
+
+
+
+
+
+    // Function to fetch data from the server
+    async function fetchMenuItems() {
+        try {
+            const response = await fetch(serverApiUrl);
+            if (!response.ok) {
+                throw new Error('Failed to fetch data from server');
+            }
+            const data = await response.json();
+            displayMenuItems(data.records);
+        } catch (error) {
+            console.error(error);
+            alert('Error fetching menu items. Please check the console for more details.');
+        }
+    }
+
+    // Function to display menu items
+
+
+    // Function to display menu items
+    function displayMenuItems(items) {
+        food_slider.innerHTML = ''; // Clear the container
+        let htmlinjection = '<div id="cards-spacer-food"></div>';
+
+        const filteredRecords = items.filter(item => item.fields.Display && item.fields.FeatureRank != null);
+        const sortedRecords = filteredRecords.sort((a, b) => a.fields.FeatureRank - b.fields.FeatureRank);
+
+        sortedRecords.forEach(item => {
+            const { Name, Description, Image, OutOfStock } = item.fields;
+
+            htmlinjection += `
+                <div class="card-food">
+                    <img class="image-food" src="${Image[0].url}" alt="">
+                    <div class="text-food">
+                        <h4>${Name}</h4>
+                        <p>${Description}</p>
+                    
+            `;
+            food_slider.innerHTML = htmlinjection;
+
+            if (OutOfStock === true) {
+                htmlinjection += `
+                    <h3 class="card-food-out-of-stock">Fresh out,<br>sorry!<h3>
+                    </div>
+                </div>
+                `}
+            else {
+                htmlinjection += `
+                    </div>
+                </div>
+            `;
+            }
+
+
+        });
+    }
+
 
 });
